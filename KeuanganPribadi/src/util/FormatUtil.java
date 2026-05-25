@@ -3,9 +3,8 @@ package util;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-///**
-// * FormatUtil - Utility class untuk formatting
-// */
+// FormatUtil - utility class untuk formatting
+
 public class FormatUtil {
 
     private static final NumberFormat RUPIAH = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
