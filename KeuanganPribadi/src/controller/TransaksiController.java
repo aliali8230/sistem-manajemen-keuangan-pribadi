@@ -7,11 +7,9 @@ import model.TransaksiDAO;
 import java.time.LocalDate;
 import java.util.List;
 
-///**
-// * TransaksiController - Controller dalam pola MVC
-// * Jembatan antara View dan Model
-// * Menerapkan konsep ENCAPSULATION pada business logic
-// */
+// Jembatan antara View dan Model
+// Menerapkan konsep ENCAPSULATION pada business logic
+
 public class TransaksiController {
 
     // Encapsulation: DAO disimpan private
@@ -21,7 +19,7 @@ public class TransaksiController {
         this.dao = new TransaksiDAO();
     }
 
-    // ======================== TAMBAH ========================
+    // tambah
     public boolean tambahTransaksi(String tanggalStr, String keterangan,
                                     String kategori, String jenis, String jumlahStr) {
         try {
@@ -40,29 +38,29 @@ public class TransaksiController {
         }
     }
 
-    // ======================== AMBIL SEMUA ========================
+    // baca seluruhnya
     public List<Transaksi> getAllTransaksi() {
         return dao.findAll();
     }
 
-    // ======================== AMBIL BY ID ========================
+    // baca berdasarka id
     public Transaksi getById(int id) {
         return dao.findById(id);
     }
 
-    // ======================== FILTER BY JENIS ========================
+    // baca berdasarkan jenis
     public List<Transaksi> filterByJenis(String jenis) {
         if (jenis == null || jenis.equals("SEMUA")) return dao.findAll();
         return dao.findByJenis(jenis.toUpperCase());
     }
 
-    // ======================== CARI ========================
+    // cari
     public List<Transaksi> cari(String keyword) {
         if (keyword == null || keyword.isBlank()) return dao.findAll();
         return dao.search(keyword);
     }
 
-    // ======================== UPDATE ========================
+    // update
     public boolean updateTransaksi(int id, String tanggalStr, String keterangan,
                                     String kategori, String jenis, String jumlahStr) {
         try {
@@ -81,12 +79,12 @@ public class TransaksiController {
         }
     }
 
-    // ======================== HAPUS ========================
+    // hapus
     public boolean hapusTransaksi(int id) {
         return dao.delete(id);
     }
 
-    // ======================== RINGKASAN KEUANGAN ========================
+    // ringkasan keuangan (dari DAO)
     public double getTotalPemasukan()  { return dao.getTotalPemasukan(); }
     public double getTotalPengeluaran(){ return dao.getTotalPengeluaran(); }
     public double getSaldo()           { return dao.getSaldo(); }
