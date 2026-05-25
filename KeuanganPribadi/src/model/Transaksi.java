@@ -2,10 +2,6 @@ package model;
 
 import java.time.LocalDate;
 
-///**
-// * Transaksi - Model utama yang mewarisi BaseModel
-// * Menerapkan konsep INHERITANCE & ENCAPSULATION
-// */
 public class Transaksi extends BaseModel {
 
     // Enum untuk jenis transaksi (Encapsulation of state)
