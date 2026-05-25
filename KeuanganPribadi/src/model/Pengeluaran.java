@@ -2,10 +2,6 @@ package model;
 
 import java.time.LocalDate;
 
-///**
-// * Pengeluaran - Subclass dari Transaksi
-// * Menerapkan INHERITANCE & POLYMORPHISM lebih dalam
-// */
 public class Pengeluaran extends Transaksi {
 
     private String tujuanPengeluaran;
