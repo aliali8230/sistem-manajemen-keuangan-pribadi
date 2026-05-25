@@ -7,10 +7,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-///**
-// * TransaksiDAO - Data Access Object untuk operasi CRUD
-// * Menerapkan konsep ENCAPSULATION pada akses data
-// */
+// TransaksiDAO - Data Access Object untuk operasi CRUD
+
 public class TransaksiDAO {
 
     private final Connection conn;
@@ -19,7 +17,7 @@ public class TransaksiDAO {
         this.conn = DatabaseConnection.getInstance().getConnection();
     }
 
-    // ======================== CREATE ========================
+    // create
     public boolean insert(Transaksi t) {
         String sql = "INSERT INTO transaksi (tanggal, keterangan, kategori, jenis, jumlah) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -40,7 +38,7 @@ public class TransaksiDAO {
         return false;
     }
 
-    // ======================== READ ALL ========================
+    // read all
     public List<Transaksi> findAll() {
         List<Transaksi> list = new ArrayList<>();
         String sql = "SELECT * FROM transaksi ORDER BY tanggal DESC, created_at DESC";
@@ -55,7 +53,7 @@ public class TransaksiDAO {
         return list;
     }
 
-    // ======================== READ BY ID ========================
+    // read by id
     public Transaksi findById(int id) {
         String sql = "SELECT * FROM transaksi WHERE id = ?";
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -68,7 +66,7 @@ public class TransaksiDAO {
         return null;
     }
 
-    // ======================== READ BY JENIS ========================
+    // read by jenis
     public List<Transaksi> findByJenis(String jenis) {
         List<Transaksi> list = new ArrayList<>();
         String sql = "SELECT * FROM transaksi WHERE jenis = ? ORDER BY tanggal DESC";
@@ -82,7 +80,7 @@ public class TransaksiDAO {
         return list;
     }
 
-    // ======================== SEARCH ========================
+    // search
     public List<Transaksi> search(String keyword) {
         List<Transaksi> list = new ArrayList<>();
         String sql = "SELECT * FROM transaksi WHERE keterangan LIKE ? OR kategori LIKE ? ORDER BY tanggal DESC";
@@ -98,7 +96,7 @@ public class TransaksiDAO {
         return list;
     }
 
-    // ======================== UPDATE ========================
+    // update
     public boolean update(Transaksi t) {
         String sql = "UPDATE transaksi SET tanggal=?, keterangan=?, kategori=?, jenis=?, jumlah=? WHERE id=?";
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -115,7 +113,7 @@ public class TransaksiDAO {
         return false;
     }
 
-    // ======================== DELETE ========================
+    // delete
     public boolean delete(int id) {
         String sql = "DELETE FROM transaksi WHERE id = ?";
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -127,7 +125,7 @@ public class TransaksiDAO {
         return false;
     }
 
-    // ======================== SUMMARY ========================
+    // ringkasan 
     public double getTotalPemasukan() {
         return getTotal("PEMASUKAN");
     }
@@ -152,8 +150,7 @@ public class TransaksiDAO {
         return 0;
     }
 
-    // ======================== MAPPER ========================
-    // Polymorphism: membuat subclass sesuai jenis transaksi
+    // Mapper -> penerjemah 
     private Transaksi mapRow(ResultSet rs) throws SQLException {
         int id            = rs.getInt("id");
         LocalDate tanggal = rs.getDate("tanggal").toLocalDate();
