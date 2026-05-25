@@ -5,9 +5,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-// DatabaseConnection - Singleton pattern untuk koneksi MySQL
-// Menerapkan konsep Encapsulation
-
 public class DatabaseConnection {
 
     // Encapsulation: field private -> biar gabisa di akses class lain
