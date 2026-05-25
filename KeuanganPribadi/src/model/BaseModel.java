@@ -2,10 +2,9 @@ package model;
 
 import java.time.LocalDate;
 
-/**
- * BaseModel - Abstract class sebagai fondasi semua model
- * Menerapkan konsep ABSTRACTION
- */
+ // BaseModel - Abstract class sebagai fondasi semua model
+ // Menerapkan konsep ABSTRACTION
+
 public abstract class BaseModel {
 
     // Encapsulation: field protected agar subclass bisa akses
